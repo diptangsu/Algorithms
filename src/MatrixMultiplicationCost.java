@@ -8,8 +8,7 @@ public class MatrixMultiplicationCost {
         arr = new int[]{20, 5, 10, 20, 30};
         int cost = mmc.findCost(arr);
         System.out.println(cost);
-        //POP(1, arr.length - 1);
-        //printParenthesis(1, arr.length - 1);
+        POP(1, arr.length - 1);
     }
 
     private static void POP(int i, int j) {
@@ -24,22 +23,6 @@ public class MatrixMultiplicationCost {
         }
     }
 
-    private static void printParenthesis(int i, int j)
-    {
-        // If only one matrix left in current segment
-        if (i == j)
-        {
-            System.out.print("A" + i);
-            return;
-        }
-
-        System.out.print("(");
-        printParenthesis(i, s[i][j]);
-        printParenthesis(s[i][j] + 1, j);
-        System.out.print(")");
-    }
-
-
     private int findCost(int arr[]) {
         m = new int[arr.length][arr.length];
         s = new int[arr.length][arr.length];
@@ -52,7 +35,7 @@ public class MatrixMultiplicationCost {
                     q = m[i][k] + m[k][j] + arr[i] * arr[k] * arr[j];
                     if (q < m[i][j]) {
                         m[i][j] = q;
-                        s[i][j] = k;
+                        s[i + 1][j] = k;
                     }
                 }
             }
