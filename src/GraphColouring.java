@@ -1,18 +1,20 @@
 import java.util.Arrays;
+import java.util.Scanner;
 
 class GraphColouring {
     private static int g[][], len, color[], c;
 
     public static void main(String args[]) {
-        /*g = InputMatrix.inputAdjacencyMatrix();
-        len = g.length;*/
-        len = 3;
+        /*g = InputMatrix.inputAdjacencyMatrix();*/
+        Scanner sc = new Scanner(System.in);
         g = new int[][]{
                 {0, 1, 1},
                 {1, 0, 1},
                 {1, 1, 0}};
+        len = g.length;
         color = new int[len];
-        c = 3;
+        System.out.print("Enter the number of colours available : ");
+        c = sc.nextInt();
 
         colour(0);
     }

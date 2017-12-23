@@ -7,15 +7,15 @@ public class MatrixMultiplicationCost {
         //int arr[] = {2, 3, 6, 4, 5};
         arr = new int[]{20, 5, 10, 20, 30};
         int cost = mmc.findCost(arr);
-        System.out.println(cost);
+        System.out.println("Minimum cost = " + cost);
+        System.out.print("Order in which the matrices need to be multiplied : ");
         POP(1, arr.length - 1);
     }
 
     private static void POP(int i, int j) {
         if (i == j) {
             System.out.print("A" + i);
-        }
-        else {
+        } else {
             System.out.print("(");
             POP(i, s[i][j]);
             POP(s[i][j] + 1, j);
@@ -33,11 +33,13 @@ public class MatrixMultiplicationCost {
                 m[i][j] = Integer.MAX_VALUE;
                 for (int k = i + 1; k < j; k++) {
                     q = m[i][k] + m[k][j] + arr[i] * arr[k] * arr[j];
+                    System.out.printf("%d%d %d%d %d %d %d : %d\n", i, k, k, j, i, k, j, q);
                     if (q < m[i][j]) {
                         m[i][j] = q;
                         s[i + 1][j] = k;
                     }
                 }
+                System.out.println();
             }
         }
         for (int i = 0; i < len; i++) {
